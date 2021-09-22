@@ -77,8 +77,11 @@ async function traverse(
 
   if (onlyTypeScript) {
     files = files.filter(({ src, fileExt }) => {
-      if (fileExt !== "vue" || !hasScriptTag(src)) {
+      if (fileExt !== "vue") {
         return true;
+      }
+      if(!hasScriptTag(src)){
+        return false;
       }
       return isTs(src) || isImportOtherTs(src);
     });
@@ -112,12 +115,13 @@ async function getDiagnostics({ docs, workspace, onlyTemplate }: Source) {
       scriptRegionDocuments as any,
       workspace
     );
-    const bar = new ProgressBar("checking [:bar] :current/:total", {
+    const bar = new ProgressBar("checking [:bar] :current/:total\n", {
       total: docs.length,
       width: 20,
       clear: true,
     });
     for (const doc of docs) {
+      console.log('\n\ncheck file-----------:\n',doc.uri,'\n')
       const vueTplResults = vueMode.doValidation(doc);
       let scriptResults: Diagnostic[] = [];
       if (!onlyTemplate && scriptMode.doValidation) {

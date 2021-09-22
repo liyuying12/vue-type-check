@@ -4,7 +4,7 @@
   "description": "a type checker for typescript written Vue components",
   "main": "dist/index.js",
   "bin": {
-    "vue-type-check": "dist/cli.js",
+    "ks-vue-type-check": "dist/cli.js",
     "vtc": "dist/cli.js"
   },
   "scripts": {
