@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "bin": {
     "ks-vue-type-check": "dist/cli.js",
+    "vue-type-check": "dist/cli.js",
     "vtc": "dist/cli.js"
   },
   "scripts": {
